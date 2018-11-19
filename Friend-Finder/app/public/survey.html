@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="text-center">
+                <h1 class="text-center"><span class="fa fa-home"></span> Survey</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Questions: Rate from 1 to 5</h2>
+                    </div>
+                    <div class="panel-body">
+                        <form id="survey">
+                            <h1>Friend Finder</h1>
+                            <h3>About You</h3>
+                            <h4>name</h4>
+                            <input type="text" id="name" class="form-control" required>
+                            <h4>image</h4>
+                            <input type="text" id="image" class="form-control" required>
+
+                            <div class="mt-4">
+                                <h2>How often do you wonder about the vastness of space</h2>
+                                <select data-placeholder="" class="chosen-select" id="q1">
+                                    <option value=""></option>
+                                    <option value="1">1 (Strongly Disagree)</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 (Strongly Agree)</option>
+                                </select>
+                            </div>
+                            <div class="mt-4">
+                                <h2>Do you believe the climate temperature will reach a breaking point</h2>
+                                <select data-placeholder="" class="chosen-select" id="q2">
+                                    <option value=""></option>
+                                    <option value="1">1 (Strongly Disagree)</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 (Strongly Agree)</option>
+                                </select>
+                            </div>
+
+                            <div class="mt-4">
+                                <h2>Do you like to code</h2>
+                                <select data-placeholder="" class="chosen-select" id="q3">
+                                    <option value=""></option>
+                                    <option value="1">1 (Strongly Disagree)</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 (Strongly Agree)</option>
+                                </select>
+                            </div>
+                            <div class="mt-4">
+                                <h2>Do you enjoy sleeping?</h2>
+                                <select data-placeholder="" class="chosen-select" id="q4">
+                                    <option value=""></option>
+                                    <option value="1">1 (Strongly Disagree)</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 (Strongly Agree)</option>
+                                </select>
+                            </div>
+                            <div class="mt-4">
+                                <h2>Do you enjoy taking walks?</h2>
+                                <select data-placeholder="" class="chosen-select" id="q5">
+                                    <option value=""></option>
+                                    <option value="1">1 (Strongly Disagree)</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5 (Strongly Agree)</option>
+                                </select>
+                            </div>
+                            <div class=mt-4>
+                                <button id="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer mt-4">
+            <div>
+                <nav>
+                    <a href="/friends">api table |</a>
+                    <a href="http://">some other link</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div id="ResultModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="closeModal" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title"><strong>Best Match</strong></h2>
+                </div>
+                <div class="modal-body">
+                    <h2 id="matchName"></h2>
+                    <img id="matchImg" style="width:100%;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="close" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+<script>
+    //captures users input
+    //post route - $.post
+    //modal
+    $("#close").on("click", function () {
+        $('#name').val('');
+        $('#image').val('');
+        for (var i = 1; i <= 5; i++) {
+            $('#q' + i).val('');
+        }
+    });
+
+    ///////
+
+    $("#submit").on("click", function (events) {
+        events.preventDefault()
+
+        if($("#name").val().trim() && $("#image").val().trim()){
+
+        
+
+        function validate() {
+            let isValid = true;
+            
+            // $(".form-control")
+        }
+
+
+        var userinput = {
+            name: $("#name").val().trim(),
+            photo: $("#image").val().trim(),
+            scores: [$("#q1").val(),
+                $("#q2").val(),
+                $("#q3").val(),
+                $("#q4").val(),
+                $("#q5").val()
+            ]
+        }
+
+        $.post("/userdata", userinput, (data) => {
+            console.log(data)
+            var newFriend = {};
+            var minDiff = 40;
+            for (let i = 0; i < data.length - 1; i++) {
+                var totalDiff = 0;
+                
+                console.log(data[i].scores)
+                for (let j = 0; j < userinput.scores.length; j++) {
+
+                   totalDiff += Math.abs(parseInt(userinput.scores[j] - parseInt(data[i].scores[j])))
+                    
+                    //    console.log(data)
+                    //    console.log(data[i])
+                    //    console.log(newData)
+                }
+                if(totalDiff < minDiff){
+                    minDiff = totalDiff;
+                    newFriend = data[i]
+                } 
+
+            }
+            console.log(newFriend)
+            $("#matchName").text(newFriend.name)
+            $("#matchImg").attr("src", newFriend.photo)
+            $("#ResultModal").modal("toggle")
+
+        });
+        // console.log(userinput)
+
+
+        // $.post("userdata",
+        //     { userinput: 1 },
+        //     function (data) {
+        //         console.log(data)
+
+        //     })
+    } else {
+        alert("Please enter a name & or Photo to continue")
+    }
+    });
+
+</script>
+
+</html>
